@@ -1,19 +1,17 @@
 import json
 import plotly
 import pandas as pd
-
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import sent_tokenize
-from nltk import pos_tag, word_tokenize
-
-
+import joblib
+import nltk
+from sqlalchemy import create_engine
 from sklearn.base import BaseEstimator, TransformerMixin
-
 from flask import Flask
 from flask import render_template, request
 from plotly.graph_objs import Bar, Pie
-import joblib
-from sqlalchemy import create_engine
+
+nltk.download("punkt")
+nltk.download("wordnet")
+nltk.download("averaged_perceptron_tagger")
 
 
 app = Flask(__name__)
@@ -21,9 +19,9 @@ app = Flask(__name__)
 
 class StartingVerbExtractor(BaseEstimator, TransformerMixin):
     def starting_verb(self, text):
-        sentence_list = sent_tokenize(text)
+        sentence_list = nltk.sent_tokenize(text)
         for sentence in sentence_list:
-            pos_tags = pos_tag(tokenize(sentence))
+            pos_tags = nltk.pos_tag(tokenize(sentence))
             first_word, first_tag = pos_tags[0]
             if first_tag in ["VB", "VBP"] or first_word == "RT":
                 return True
@@ -38,8 +36,8 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 
 
 def tokenize(text):
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
+    tokens = nltk.word_tokenize(text)
+    lemmatizer = nltk.WordNetLemmatizer()
 
     clean_tokens = []
     for tok in tokens:
