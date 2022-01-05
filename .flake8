@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 150
+inline-quotes = "
+ignore = W503, E231, W504, E203, W605
+select = C,E,F,W,B,B950
+exclude = __init__.py
