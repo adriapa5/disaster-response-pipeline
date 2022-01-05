@@ -4,6 +4,8 @@ notebook==6.4.6
 numpy==1.21.2
 nltk==3.6.5
 scikit-learn==1.0.1
+flask==2.0.2
+plotly==3.9.0
 flake8==3.7.7
 nb-black==1.0.6
 black==21.12b0
