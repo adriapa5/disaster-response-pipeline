@@ -37,7 +37,8 @@ More detailed information can be found in requirements.txt file.
 <a name="file_structure"></a>
 ### File Structure
 This is the file structure of the project:
-
+```
+.
 ├───app
 │   └───templates
 │   │   └───go.html
@@ -64,18 +65,19 @@ This is the file structure of the project:
 └───.flake8
 └───README.md
 └───requirements.txt
+```
 
 The most important files are:
-* app/run.py: Launch the Flask app used to classify text messages.
-* data/process_data.py: Responsible of ETL pipeline, extract, clean, transform and store the data in the SQLite database.
-* model/train_classifier.py: Responsible of Machine Learning pipeline, load the data for training the model and save the model as .pkl file which can be consumed later from the predictions via web app.
+* **app/run.py**: Launch the Flask app used to classify text messages.
+* **data/process_data.py**: Responsible of ETL pipeline, extract, clean, transform and store the data in the SQLite database.
+* **model/train_classifier.py**: Responsible of Machine Learning pipeline, load the data for training the model and save the model as .pkl file which can be consumed later from the predictions via web app.
 
 <a name="installation"></a>
 ### Installing
 * Clone the repository.
-
-`git clone https://github.com/adriapa5/disaster-response-pipeline.git`
-
+    ```
+    git clone https://github.com/adriapa5/disaster-response-pipeline.git
+    ```
 * Be sure that you have installed the required version of python or event better you have a proper conda enviroment ready with python 3.7+.
 * Install the necessary libraries provided in requirements.txt file.
 * Follow the instructions provided in the next section.
@@ -85,12 +87,18 @@ The most important files are:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        ```
+        python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+        ```
     - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+        ```
+        python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
+        ```
 
 2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+   ```
+   python run.py
+   ```
 
 3. Go to http://0.0.0.0:3001/
 
@@ -106,7 +114,7 @@ The **ML Pipeline Preparation Notebook** can be used to re-train or tune the mod
 <a name="production"></a>
 ### It's Alive
 
-This application has been deployed and you can play with it [here](https://disaster-response-pipeline-zkxgj.ondigitalocean.app/)
+This application has been deployed and you can play with it [here](https://disaster-response-pipeline-zkxgj.ondigitalocean.app/).
 
 1. The main page shows some graphs about training dataset, provided by Figure Eight
 
