@@ -29,13 +29,15 @@ There are three important parts in the project:
 ### Dependencies
 * Python 3.7+
 * SQLite database libraries: SQLalchemy
-* Machine Learning libraries: Pandas, Numpy, Sciki-Lean
+* Machine Learning libraries: Pandas, Numpy, Scikit-Learn
 * Natural Language Processing libraries: NLTK
 * Web App and Data Visualization libraries: Flask, Plotly
 
 More detailed information can be found in requirements.txt file.
 <a name="file_structure"></a>
 ### File Structure
+This is the file structure of the project:
+
 ├───app
 │   └───templates
 │   │   └───go.html
@@ -71,7 +73,9 @@ The most important files are:
 <a name="installation"></a>
 ### Installing
 * Clone the repository.
+
 `git clone https://github.com/adriapa5/disaster-response-pipeline.git`
+
 * Be sure that you have installed the required version of python or event better you have a proper conda enviroment ready with python 3.7+.
 * Install the necessary libraries provided in requirements.txt file.
 * Follow the instructions provided in the next section.
@@ -106,15 +110,15 @@ This application has been deployed and you can play with it [here](https://disas
 
 1. The main page shows some graphs about training dataset, provided by Figure Eight
 
-![Main Page](screenshots/main_page.png)
+![Main Page](screenshots/main_page.PNG)
 
 2. This is an example of a message that can be introduced to test the performance of the model
 
-![Sample Input](screenshots/sample_input.png)
+![Sample Input](screenshots/sample_input.PNG)
 
 3. After clicking **Classify Message**, the message will be categorized and the belonging message categories will be highlighted in green
 
-![Sample Prediction](screenshots/sample_output.png)
+![Sample Prediction](screenshots/sample_output.PNG)
 
 <a name="acknowledgements"></a>
 ## Acknowledgements
