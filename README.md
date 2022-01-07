@@ -8,7 +8,7 @@
 	3. [Installing](#installation)
     4. [Instructions](#instructions)
 	5. [Additional Material](#material)
-    6. [It's Alive](#production)
+    6. [It's Alive!](#production)
 3. [License](#license)
 4. [Acknowledgement](#acknowledgement)
 
@@ -90,17 +90,19 @@ The most important files are:
         ```
         python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
         ```
+        ![ETL pipeline Output](screenshots/etl_sample_output.PNG)
     - To run ML pipeline that trains classifier and saves
         ```
         python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
         ```
+        ![Machine Learning pipeline Output](screenshots/ml_sample_output.PNG)
 
-2. Run the following command in the app's directory to run your web app.
+2. Run the following command to run your web app.
    ```
-   python run.py
+   python app/run.py
    ```
-
-3. Go to http://0.0.0.0:3001/
+   ![Web app Output](screenshots/web_sample_output.PNG)
+3. Go to http://localhost:3001/
 
 <a name="material"></a>
 ### Additional Material
@@ -112,7 +114,7 @@ There are a couple of jupyter notebooks in **preparation** folder that can be us
 The **ML Pipeline Preparation Notebook** can be used to re-train or tune the model.
 
 <a name="production"></a>
-### It's Alive
+### It's Alive!
 
 This application has been deployed and you can play with it [here](https://disaster-response-pipeline-zkxgj.ondigitalocean.app/).
 
