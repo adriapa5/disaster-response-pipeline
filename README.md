@@ -142,10 +142,12 @@ As you can see on the provided screenshot for Machile Learning Pipeline Output i
 * **recall**: the ratio of correctly predicted positive observations to the all observations in actual class.
 
 We will take a look on the metrics for some of the minority classes:
-|category|precision|recall|
-|water|0.59|0.84|
-|transport|0.63|0.28|
-|fire|0.00|0.00|
+
+category|precision|recall
+-------- | ---- | ----
+water|0.59|0.84|
+transport|0.63|0.28
+fire|0.00|0.00
 
 All the metrics for **fire** category are 0.00 which this means that the model won't be able to predict correctly that category. 
 For **transport** category, the precision is not bad, but the recall is very low. This means that the majority of the predicted labels for transport category will be correct when compared to the training labels, but the model will return very few results for this category. 
