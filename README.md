@@ -9,8 +9,9 @@
     4. [Instructions](#instructions)
 	5. [Additional Material](#material)
     6. [It's Alive!](#production)
-3. [License](#license)
+3. [Known Issues](#known-issues)
 4. [Acknowledgement](#acknowledgement)
+5. [License](#license)
 
 
 <a name="description"></a>
@@ -129,6 +130,33 @@ This application has been deployed and you can play with it [here](https://disas
 3. After clicking **Classify Message**, the message will be categorized and the belonging message categories will be highlighted in green
 
 ![Sample Prediction](screenshots/sample_output.PNG)
+
+<a name="known_issues"></a>
+## Known Issues
+The provided dataset is imbalanced. There are categories with many examples (like aid_related for example) and they are called **Majority Classes**. On the other hand, there are categories that have few examples (eg: some categories like water, transport or fire have few representation) and they are called **Minority Class**. 
+This can causes several issues, because the minority classes are harder to predict due to the small representation. Also, the abundance of examples from the majority classes can swamp the minority class.
+As you can see on the provided screenshot for Machile Learning Pipeline Output in the [Instructions](#instructions) section, the overall **accuracy** of the model seems to be pretty good (0.93). However, if you take a look deeper on the metrics (precision and recall mainly) for minority classes, you will see that they do not look pretty good. First, some refresh about the meaning of these **metrics**:
+
+* **accuracy**: the ratio of correctly predicted observation to the total observations
+* **precision**: the ratio of correctly predicted positive observations to the total predicted positive observations. High precision relates to the low false positive rate.
+* **recall**: the ratio of correctly predicted positive observations to the all observations in actual class.
+
+We will take a look on the metrics for some of the minority classes:
+|category|precision|recall|
+|water|0.59|0.84|
+|transport|0.63|0.28|
+|fire|0.00|0.00|
+
+All the metrics for **fire** category are 0.00 which this means that the model won't be able to predict correctly that category. 
+For **transport** category, the precision is not bad, but the recall is very low. This means that the majority of the predicted labels for transport category will be correct when compared to the training labels, but the model will return very few results for this category. 
+For **water** category, the recall is high but the precision isn't which means that the model returns many results and most of its predicted labels are incorrect when are compared to the training labels.
+
+Summarizing, a naive application of a model may focus on learning the characteristics of the abundant observations only, neglecting the examples from the minority class that is, in fact, of more interest and whose predictions are more valuable. An ideal system will have high precision and high recall and it will return many results, with all results labeled correctly.
+
+You can find more information about imbalanced dataset in the following links:
+* [What is imbalanced classification](https://machinelearningmastery.com/what-is-imbalanced-classification/)
+* [Accuracy, Precision, Recall & F1 Score](https://blog.exsilio.com/all/accuracy-precision-recall-f1-score-interpretation-of-performance-measures/)
+* [Precision-Recall metric](https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html)
 
 <a name="acknowledgements"></a>
 ## Acknowledgements
