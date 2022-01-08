@@ -36,14 +36,6 @@ def load_data(database_filepath):
     table_name = database_filepath.replace(".db", "")
     df = pd.read_sql_table(table_name, engine)
 
-    # remove child alone as it has all zeros only
-    df = df.drop(["child_alone"], axis=1)
-
-    # the related field with value 2 is very small and this can cause errors.
-    # This is why I decided to replace the value 2 of this column to 1,
-    # considering a valid response and because it's the majority class
-    df["related"] = df["related"].map(lambda x: 1 if x == 2 else x)
-
     # prepare the output
     X = df["message"]
     y = df.iloc[:, 4:]

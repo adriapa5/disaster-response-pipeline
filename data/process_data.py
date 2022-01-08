@@ -48,6 +48,15 @@ def clean_data(df):
         categories[column] = categories[column].astype(str).str[-1:]
         # convert column from string to numeric
         categories[column] = categories[column].astype(int)
+
+    # remove child alone as it has all zeros only
+    categories = categories.drop(["child_alone"], axis=1)
+
+    # the related field with value 2 is very small and this can cause errors.
+    # This is why I decided to replace the value 2 of this column to 1,
+    # considering a valid response and because it's the majority class
+    categories["related"] = categories["related"].map(lambda x: 1 if x == 2 else x)
+
     # drop the original categories column from `df`
     df.drop(["categories"], axis=1, inplace=True)
     # concatenate the original dataframe with the new `categories` dataframe
